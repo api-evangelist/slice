@@ -1,0 +1,58 @@
+aid: slice
+name: Slice
+description: >-
+  Slice is an online ordering and management platform built specifically for
+  independent local pizzerias, giving small shops digital ordering, marketing,
+  loyalty, and back-office tools that compete with large delivery marketplaces
+  at a low flat per-order fee. For technology partners, Slice publishes a Slice
+  Public API documented on a Stoplight developer portal, exposing
+  pizzeria-oriented resources such as shops, menus, and orders over a RESTful
+  HTTP interface. The platform serves pizzeria owners and the partners that
+  integrate ordering, POS, and operations into the Slice network across
+  thousands of locations.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Restaurant
+  - Pizza
+  - Online Ordering
+  - Local Commerce
+  - Menus
+  - Orders
+url: https://raw.githubusercontent.com/api-evangelist/slice/refs/heads/main/apis.yml
+created: '2026-06-02'
+modified: '2026-06-02'
+specificationVersion: '0.19'
+apis:
+  - aid: slice:rest-api
+    name: Slice Public API
+    description: >-
+      The Slice Public API is a RESTful HTTP API documented on a Stoplight
+      developer portal, providing programmatic access to pizzeria-focused
+      resources within the Slice network such as shops, menus, and orders.
+      It is intended for technology partners integrating ordering and
+      operations with local pizzerias that use Slice for their digital
+      presence.
+    humanURL: https://developer.slicelife.com/
+    tags:
+      - Online Ordering
+      - Menus
+      - Orders
+      - Pizzerias
+    properties:
+      - type: Documentation
+        url: https://developer.slicelife.com/
+common:
+  - type: Website
+    url: https://slicelife.com/
+  - type: Documentation
+    url: https://developer.slicelife.com/
+  - type: Pricing
+    url: https://slice.com/pricing/
+  - type: Support
+    url: https://slicelife.com/pages/support
+  - type: GitHubOrganization
+    url: https://github.com/slicelife
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
