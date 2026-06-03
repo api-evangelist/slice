@@ -1,0 +1,96 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Slice
+providerId: slice
+created: '2026-06-03'
+modified: '2026-06-03'
+reconciled: false
+tags:
+  - Online Ordering
+  - Pizzerias
+  - Flat Per-Order Pricing
+  - Local Commerce
+description: >-
+  Slice prices its ordering-and-management platform for pizzeria owners as a flat
+  per-order fee rather than the percentage take-rate used by large delivery
+  marketplaces. Two product tiers are publicly advertised: Slice Essentials at a flat
+  $2.99 per order and Slice Premium at a flat $2.50 per order, with $0 in fees on
+  orders under $10. Slice positions this as an effective rate as low as ~5% per order
+  versus the 20-30% charged by third-party apps. These plans are charged to the
+  pizzeria owner using the Slice platform. Access to the Slice Public API
+  (developer.slicelife.com) is provisioned for technology partners via an issued API
+  key and is partner-negotiated; Slice does not publish a separate, standalone price
+  for API access. Per-tier prices should be confirmed against the live pricing page
+  before consumers rely on them.
+sources:
+  - https://slice.com/pricing/
+  - https://slicelife.com/owners/pricing
+  - https://developer.slicelife.com/
+plans:
+  - id: slice-essentials
+    name: Slice Essentials
+    type: usage
+    description: >-
+      Entry product tier for pizzerias. Flat $2.99 per order; no fee on orders under
+      $10. Provides digital ordering and core management tooling.
+    entries:
+      - label: Flat per-order fee
+        name: per_order_fee
+        type: usage
+        metric: order
+        limit: 1
+        timeFrame: order
+        geo: us
+        unit: 1
+        amount: 2.99
+        currency: USD
+      - label: Orders under $10
+        name: small_order_fee
+        type: usage
+        metric: order
+        timeFrame: order
+        geo: us
+        amount: 0.00
+        currency: USD
+  - id: slice-premium
+    name: Slice Premium
+    type: usage
+    description: >-
+      Higher product tier for pizzerias. Lower flat $2.50 per order; no fee on orders
+      under $10. Adds marketing, loyalty, and back-office capabilities.
+    entries:
+      - label: Flat per-order fee
+        name: per_order_fee
+        type: usage
+        metric: order
+        limit: 1
+        timeFrame: order
+        geo: us
+        unit: 1
+        amount: 2.50
+        currency: USD
+      - label: Orders under $10
+        name: small_order_fee
+        type: usage
+        metric: order
+        timeFrame: order
+        geo: us
+        amount: 0.00
+        currency: USD
+  - id: slice-public-api-partner
+    name: Slice Public API (Partner Access)
+    type: partner
+    description: >-
+      Programmatic access to the Slice Public API for technology partners. Provisioned
+      via an API key obtained from api-support@slicelife.com. Pricing is
+      partner-negotiated and not separately published; documented here as a distinct
+      access surface rather than a priced retail plan.
+    entries:
+      - label: Partner API access
+        name: partner_api_access
+        type: partner
+        metric: agreement
+        geo: us
+        amount: null
+        currency: USD

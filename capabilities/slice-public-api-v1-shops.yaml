@@ -1,0 +1,78 @@
+naftiko: "1.0.0-alpha2"
+
+info:
+  label: "Slice Public API (v1) — Shops"
+  description: >-
+    Shops surface of the Slice Public API v1. 1 operations. Lead operation: Get Shops.
+    Self-contained Naftiko capability covering one Slice business surface.
+  tags:
+    - Slice
+    - Online Ordering
+    - Shops
+  created: "2026-06-03"
+  modified: "2026-06-03"
+
+binds:
+  - namespace: env
+    keys:
+      SLICE_API_KEY: SLICE_API_KEY
+
+capability:
+
+  consumes:
+    - type: http
+      namespace: "slice-public-api-v1-shops"
+      # Slice does not publicly publish the API server URL; partners receive it with credentials.
+      baseUri: "https://developer.slicelife.com"
+      description: "Slice Public API v1 — Shops business capability. Self-contained, no shared references."
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "{{env.SLICE_API_KEY}}"
+        placement: header
+      resources:
+        - name: "shops"
+          path: "/shops"
+          operations:
+            - name: "getShops"
+              method: GET
+              description: "Get Shops"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      namespace: "slice-public-api-v1-shops-rest"
+      port: 8080
+      description: "REST adapter for Slice Public API v1 — Shops. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+      resources:
+        - path: "/v1/shops"
+          name: "shops"
+          description: "REST surface for /shops."
+          operations:
+            - method: GET
+              name: "getShops"
+              description: "Get Shops"
+              call: "slice-public-api-v1-shops.getShops"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+    - type: mcp
+      namespace: "slice-public-api-v1-shops-mcp"
+      port: 9090
+      transport: http
+      description: "MCP adapter for Slice Public API v1 — Shops. One tool per consumed operation, routed inline through this capability's consumes block."
+      tools:
+        - name: "get-shops"
+          description: "Get Shops"
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: "slice-public-api-v1-shops.getShops"
+          outputParameters:
+            - type: object
+              mapping: "$."

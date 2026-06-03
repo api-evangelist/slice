@@ -1,0 +1,55 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Slice
+providerId: slice
+created: '2026-06-03'
+modified: '2026-06-03'
+reconciled: false
+tags:
+  - FinOps
+  - FOCUS
+  - Online Ordering
+  - Flat Per-Order Pricing
+description: >-
+  FOCUS-aligned FinOps view of Slice's commercial surface. Slice's billable unit is
+  the order: pizzerias on Slice Essentials pay a flat $2.99/order and those on Slice
+  Premium pay a flat $2.50/order, with $0 charged on orders under $10. This is a
+  flat-fee usage model (charge per order) rather than a percentage take-rate or a
+  metered API-call model. Access to the Slice Public API is partner-gated and not
+  separately priced, so there is no published per-API-call cost dimension to model;
+  the cost driver remains the order. Cost telemetry for partners integrating the API
+  is therefore tied to order volume processed through the platform.
+sources:
+  - https://slice.com/pricing/
+  - https://slicelife.com/owners/pricing
+  - https://developer.slicelife.com/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Slice (Slice Life, Inc.)
+billingModel:
+  type: flat-per-unit
+  billableUnit: order
+  currency: USD
+  tiers:
+    - name: Slice Essentials
+      chargePerOrder: 2.99
+      smallOrderThreshold: 10.00
+      smallOrderCharge: 0.00
+    - name: Slice Premium
+      chargePerOrder: 2.50
+      smallOrderThreshold: 10.00
+      smallOrderCharge: 0.00
+focusMapping:
+  ChargeCategory: Usage
+  PricingUnit: order
+  PricingCategory: Standard
+  CommitmentDiscountCategory: null
+  notes: >-
+    Charges map to FOCUS ChargeCategory "Usage" with PricingUnit "order". No
+    committed-use or metered-API-call dimension is published; the API access tier is
+    partner-negotiated and excluded from the priced cost model.

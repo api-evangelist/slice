@@ -6,11 +6,12 @@ description: >-
   loyalty, and back-office tools that compete with large delivery marketplaces
   at a low flat per-order fee. For technology partners, Slice publishes a Slice
   Public API documented on a Stoplight developer portal, exposing
-  pizzeria-oriented resources such as shops, menus, and orders over a RESTful
-  HTTP interface. The platform serves pizzeria owners and the partners that
-  integrate ordering, POS, and operations into the Slice network across
-  thousands of locations.
+  pizzeria-oriented resources such as shops and orders over a RESTful HTTP
+  interface in two versions (v1 and v2). The platform serves pizzeria owners and
+  the partners that integrate ordering, POS, and operations into the Slice
+  network across thousands of locations.
 type: Index
+x-type: company
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Restaurant
@@ -21,38 +22,122 @@ tags:
   - Orders
 url: https://raw.githubusercontent.com/api-evangelist/slice/refs/heads/main/apis.yml
 created: '2026-06-02'
-modified: '2026-06-02'
+modified: '2026-06-03'
 specificationVersion: '0.19'
 apis:
-  - aid: slice:rest-api
-    name: Slice Public API
+  - aid: slice:rest-api-v1
+    name: Slice Public API (v1)
     description: >-
-      The Slice Public API is a RESTful HTTP API documented on a Stoplight
-      developer portal, providing programmatic access to pizzeria-focused
-      resources within the Slice network such as shops, menus, and orders.
-      It is intended for technology partners integrating ordering and
-      operations with local pizzerias that use Slice for their digital
-      presence.
+      Version 1 of the Slice Public API: a RESTful HTTP API documented on Slice's
+      Stoplight developer portal (project slice-public-api, spec node /API-V1.yaml).
+      It provides programmatic access to pizzeria-focused resources in the Slice
+      network — shops and orders — for technology partners integrating ordering and
+      operations with local pizzerias. Paths, methods, operation summaries, and
+      component-schema names were confirmed from Slice's live Stoplight project node
+      tree; schema property internals are auth-gated and not enumerated.
     humanURL: https://developer.slicelife.com/
     tags:
       - Online Ordering
-      - Menus
+      - Shops
       - Orders
       - Pizzerias
+      - REST
     properties:
       - type: Documentation
         url: https://developer.slicelife.com/
+      - type: OpenAPI
+        url: openapi/slice-public-api-v1-openapi.yml
+      - type: Authentication
+        url: https://developer.slicelife.com/
+        title: API Key (partner-issued)
+      - type: NaftikoCapability
+        url: capabilities/slice-public-api-v1-shops.yaml
+      - type: NaftikoCapability
+        url: capabilities/slice-public-api-v1-orders.yaml
+      - type: JSONLD
+        url: json-ld/slice-context.jsonld
+  - aid: slice:rest-api-v2
+    name: Slice Public API (v2)
+    description: >-
+      Version 2 of the Slice Public API on Slice's Stoplight developer portal (spec
+      node /API-V2.yaml). It exposes the same shops and orders surface as v1 — GET
+      /shops plus create/get/update/delete on /orders — confirmed from the live
+      Stoplight project node tree.
+    humanURL: https://developer.slicelife.com/
+    tags:
+      - Online Ordering
+      - Shops
+      - Orders
+      - Pizzerias
+      - REST
+    properties:
+      - type: Documentation
+        url: https://developer.slicelife.com/
+      - type: OpenAPI
+        url: openapi/slice-public-api-v2-openapi.yml
+      - type: Authentication
+        url: https://developer.slicelife.com/
+        title: API Key (partner-issued)
+      - type: NaftikoCapability
+        url: capabilities/slice-public-api-v2-shops.yaml
+      - type: NaftikoCapability
+        url: capabilities/slice-public-api-v2-orders.yaml
+      - type: JSONLD
+        url: json-ld/slice-context.jsonld
 common:
   - type: Website
     url: https://slicelife.com/
   - type: Documentation
     url: https://developer.slicelife.com/
+  - type: GettingStarted
+    url: https://developer.slicelife.com/docs/Getting-started.md
   - type: Pricing
     url: https://slice.com/pricing/
   - type: Support
     url: https://slicelife.com/pages/support
+  - type: Contact
+    url: mailto:api-support@slicelife.com
+    title: API Support
   - type: GitHubOrganization
     url: https://github.com/slicelife
+  - type: Plans
+    url: plans/slice-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/slice-rate-limits.yml
+  - type: FinOps
+    url: finops/slice-finops.yml
+  - type: Vocabulary
+    url: vocabulary/slice-vocabulary.yml
+  - type: SpectralRules
+    url: rules/slice-rules.yml
+features:
+  - name: Shop Discovery
+    description: Retrieve pizzerias (shops) available in the Slice network via GET /shops.
+  - name: Order Lifecycle
+    description: Create, retrieve, update, and cancel orders against a Slice shop via the /orders resource.
+  - name: Two API Versions
+    description: Both v1 and v2 of the Slice Public API are published, sharing the same shops-and-orders surface.
+  - name: Partner API Key Authentication
+    description: Programmatic access is gated to approved technology partners via an API key issued by Slice.
+  - name: Stoplight Developer Portal
+    description: API documentation, onboarding, and reference are hosted on developer.slicelife.com (Stoplight).
+useCases:
+  - name: Partner Order Integration
+    description: Technology partners place and manage orders against Slice pizzerias programmatically.
+  - name: POS and Operations Sync
+    description: Integrate point-of-sale and operations systems with the Slice network of independent pizzerias.
+  - name: Shop Catalog Sync
+    description: Pull the set of Slice shops to power partner-side discovery and routing.
+integrations:
+  - name: Point-of-Sale Systems
+    description: Connect pizzeria POS systems to the Slice ordering and operations surface.
+  - name: Ordering and Marketplace Partners
+    description: Technology partners that integrate ordering into the Slice network of local pizzerias.
+solutions:
+  - name: Independent Pizzerias
+    description: Digital ordering, marketing, loyalty, and back-office tooling at a low flat per-order fee.
+  - name: Technology Partners
+    description: Programmatic shops-and-orders access to the Slice network via the partner-issued Public API.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

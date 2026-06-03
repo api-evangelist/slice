@@ -1,0 +1,92 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Slice"
+  description: >-
+    Unified taxonomy mapping the Slice Public API operational surface (shops and
+    orders, across v1 and v2) to the capability dimension used by Naftiko workflows.
+    Operations, resources, and actions are confirmed from the live Stoplight project
+    node tree for the slice-public-api project (spec nodes /API-V1.yaml and
+    /API-V2.yaml). Schema-level property internals are auth-gated on the Slice portal
+    and are intentionally not enumerated.
+  created: "2026-06-03"
+  modified: "2026-06-03"
+
+# OPERATIONAL DIMENSION (from OpenAPI specs reconstructed from the Stoplight node tree)
+operational:
+  apis:
+    - name: "Slice Public API (v1)"
+      namespace: "slice-public-api-v1"
+      version: "v1"
+      status: "active"
+      protocol: "rest"
+      specNode: "/API-V1.yaml"
+    - name: "Slice Public API (v2)"
+      namespace: "slice-public-api-v2"
+      version: "v2"
+      status: "active"
+      protocol: "rest"
+      specNode: "/API-V2.yaml"
+
+  resources:
+    - name: "shops"
+      api: "slice-public-api-v1"
+      actions: ["list"]
+    - name: "orders"
+      api: "slice-public-api-v1"
+      actions: ["create", "get", "update", "delete"]
+    - name: "shops"
+      api: "slice-public-api-v2"
+      actions: ["list"]
+    - name: "orders"
+      api: "slice-public-api-v2"
+      actions: ["create", "get", "update", "delete"]
+
+  actions:
+    - name: "list"
+      httpMethod: "GET"
+      pattern: "read"
+    - name: "get"
+      httpMethod: "GET"
+      pattern: "read"
+    - name: "create"
+      httpMethod: "POST"
+      pattern: "create"
+    - name: "update"
+      httpMethod: "PUT"
+      pattern: "update"
+    - name: "delete"
+      httpMethod: "DELETE"
+      pattern: "delete"
+
+  models:
+    - name: "Order"
+      note: "Confirmed component schema (/API-V*.yaml/components/schemas/Order); properties auth-gated."
+    - name: "Error"
+      note: "Shared error model (/models/error.yaml); properties auth-gated."
+
+# CAPABILITY DIMENSION (from Naftiko capability files)
+capability:
+  surfaces:
+    - name: "Shops"
+      capability: "slice-public-api-v1-shops"
+      operations: ["getShops"]
+    - name: "Orders"
+      capability: "slice-public-api-v1-orders"
+      operations: ["createOrder", "getOrder", "updateOrder", "deleteOrder"]
+    - name: "Shops"
+      capability: "slice-public-api-v2-shops"
+      operations: ["getShops"]
+    - name: "Orders"
+      capability: "slice-public-api-v2-orders"
+      operations: ["createOrder", "getOrder", "updateOrder", "deleteOrder"]
+
+# DOMAIN DIMENSION (business vocabulary)
+domain:
+  terms:
+    - term: "Shop"
+      definition: "An independent local pizzeria in the Slice network."
+    - term: "Order"
+      definition: "A customer order placed against a Slice shop."
+    - term: "Partner"
+      definition: "A technology partner integrating ordering and operations with Slice via the Public API using an issued API key."

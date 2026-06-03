@@ -1,0 +1,32 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "slice": "https://developer.slicelife.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Shop": "schema:Restaurant",
+    "Order": "schema:Order",
+    "Error": "slice:Error",
+
+    "id": {
+      "@id": "schema:identifier",
+      "@type": "xsd:string"
+    },
+    "orderID": {
+      "@id": "schema:orderNumber",
+      "@type": "xsd:string"
+    },
+    "shop": {
+      "@id": "slice:shop",
+      "@type": "@id"
+    },
+    "order": {
+      "@id": "slice:order",
+      "@type": "@id"
+    },
+
+    "note": "Confirmed resource types (Shop, Order) and the Error model are mapped to schema.org where a clear equivalent exists. Field-level properties of the Order and Error schemas are auth-gated on the Slice Stoplight portal and are intentionally not enumerated here; only confirmed identifiers are bound."
+  }
+}

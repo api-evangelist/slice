@@ -1,0 +1,143 @@
+# Slice Spectral Ruleset
+# Enforces conventions observed across the Slice Public API (v1 and v2). The Slice
+# surface is small (5 operations per version: GET /shops plus CRUD on /orders) and is
+# documented on a Stoplight portal with API-key authentication. This ruleset focuses on
+# documentation quality, Title Case operation summaries, naming consistency, and the
+# patterns confirmed from the live Stoplight project node tree.
+
+extends:
+  - spectral:oas
+
+rules:
+
+  # --- INFO / METADATA ---------------------------------------------------------
+  slice-info-title:
+    description: API info.title must be "Slice Public API".
+    severity: warn
+    given: $.info
+    then:
+      field: title
+      function: pattern
+      functionOptions:
+        match: '^Slice Public API'
+
+  slice-info-description-required:
+    description: API info.description must be present and at least 80 characters.
+    severity: warn
+    given: $.info
+    then:
+      field: description
+      function: length
+      functionOptions:
+        min: 80
+
+  slice-info-contact-email:
+    description: info.contact.email must be present (Slice partner support).
+    severity: warn
+    given: $.info.contact
+    then:
+      field: email
+      function: truthy
+
+  # --- OPENAPI VERSION --------------------------------------------------------
+  slice-openapi-version:
+    description: Use OpenAPI 3.0.x.
+    severity: error
+    given: $.openapi
+    then:
+      function: pattern
+      functionOptions:
+        match: '^3\.0\.'
+
+  # --- SECURITY ----------------------------------------------------------------
+  slice-security-apikey:
+    description: An ApiKey security scheme must be defined (Slice issues partner API keys).
+    severity: warn
+    given: $.components.securitySchemes
+    then:
+      field: ApiKeyAuth
+      function: truthy
+
+  slice-global-security:
+    description: A global security requirement must be applied.
+    severity: warn
+    given: $
+    then:
+      field: security
+      function: truthy
+
+  # --- PATHS / NAMING ---------------------------------------------------------
+  slice-paths-lowercase:
+    description: Path segments must be lowercase (matches /shops, /orders).
+    severity: warn
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: '^(/[a-z0-9{}._-]+)+$'
+
+  slice-no-trailing-slash:
+    description: Paths must not end with a trailing slash.
+    severity: warn
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: '.+/$'
+
+  # --- OPERATIONS -------------------------------------------------------------
+  slice-operation-operationid:
+    description: Every operation must declare an operationId.
+    severity: error
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: operationId
+      function: truthy
+
+  slice-operationid-camelcase:
+    description: operationId should be camelCase (e.g. getShops, createOrder).
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]*$'
+
+  slice-operation-summary-title-case:
+    description: >-
+      Operation summaries must be present and Title Case (matches the live Slice
+      summaries: "Get Shops", "Create Order", "Get Order", "Update Order", "Delete Order").
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: summary
+      function: pattern
+      functionOptions:
+        match: '^([A-Z][a-zA-Z0-9]*)(\s+([A-Z][a-zA-Z0-9]*|\{[a-zA-Z0-9]+\}))*$'
+
+  slice-operation-tags-required:
+    description: Every operation must be tagged (Shops or Orders).
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: tags
+      function: truthy
+
+  slice-operation-responses-required:
+    description: Every operation must define at least one response.
+    severity: error
+    given: $.paths[*][get,post,put,delete,patch].responses
+    then:
+      function: length
+      functionOptions:
+        min: 1
+
+  # --- TAGS -------------------------------------------------------------------
+  slice-tags-title-case:
+    description: Tag names must be Title Case.
+    severity: warn
+    given: $.tags[*].name
+    then:
+      function: pattern
+      functionOptions:
+        match: '^([A-Z][a-zA-Z0-9]*)(\s[A-Z][a-zA-Z0-9]*)*$'

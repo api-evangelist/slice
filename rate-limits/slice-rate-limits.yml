@@ -1,0 +1,49 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Slice
+providerId: slice
+created: '2026-06-03'
+modified: '2026-06-03'
+reconciled: false
+tags:
+  - Rate Limiting
+  - Online Ordering
+  - Partner API
+description: >-
+  Slice does not publicly publish request-rate, concurrency, or quota numbers for the
+  Slice Public API. Access is gated to approved technology partners through an issued
+  API key (request via api-support@slicelife.com), and any per-key throttling or quota
+  is established under the partner agreement rather than on the public developer
+  portal. The documented authentication surface is API-key based; consumers should
+  assume per-key limits exist, handle HTTP 401 (unauthorized) and 429 (too many
+  requests) defensively, and confirm exact limits with Slice partner support. The
+  values below are therefore policy placeholders pending partner-agreement
+  confirmation, not published figures.
+sources:
+  - https://developer.slicelife.com/
+  - https://slicelife.com/pages/support
+limits:
+  - name: Per-key request rate
+    scope: api-key
+    metric: requests
+    limit: null
+    window: null
+    published: false
+    note: >-
+      Not publicly documented. Established under the Slice partner agreement.
+  - name: Concurrency
+    scope: api-key
+    metric: concurrent-requests
+    limit: null
+    published: false
+    note: Not publicly documented.
+responseCodes:
+  - code: 401
+    name: Unauthorized
+    meaning: API key missing or invalid.
+  - code: 429
+    name: Too Many Requests
+    meaning: >-
+      Assumed throttle response for exceeding a per-key limit; confirm with Slice
+      partner support, as limits are not published on the developer portal.
