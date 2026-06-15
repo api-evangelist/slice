@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Slice Public API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shops",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Shops",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/shops"
+          },
+          "docs": "Returns shops (independent pizzerias) available in the Slice network.\nConfirmed operation from the Stoplight node `/API-V2.yaml/paths/~1shops/get`."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new order against a Slice shop.\nConfirmed operation from the Stoplight node `/API-V2.yaml/paths/~1orders/post`."
+        },
+        {
+          "info": {
+            "name": "Get Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/orders/:orderID",
+            "params": [
+              {
+                "name": "orderID",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the order."
+              }
+            ]
+          },
+          "docs": "Retrieves a single order by its identifier.\nConfirmed operation from `/API-V2.yaml/paths/~1orders~1{orderID}/get`."
+        },
+        {
+          "info": {
+            "name": "Update Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/orders/:orderID",
+            "params": [
+              {
+                "name": "orderID",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the order."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing order by its identifier.\nConfirmed operation from `/API-V2.yaml/paths/~1orders~1{orderID}/put`."
+        },
+        {
+          "info": {
+            "name": "Delete Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/orders/:orderID",
+            "params": [
+              {
+                "name": "orderID",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the order."
+              }
+            ]
+          },
+          "docs": "Cancels/deletes an existing order by its identifier.\nConfirmed operation from `/API-V2.yaml/paths/~1orders~1{orderID}/delete`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

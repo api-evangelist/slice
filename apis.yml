@@ -1,15 +1,12 @@
 aid: slice
 name: Slice
 description: >-
-  Slice is an online ordering and management platform built specifically for
-  independent local pizzerias, giving small shops digital ordering, marketing,
-  loyalty, and back-office tools that compete with large delivery marketplaces
-  at a low flat per-order fee. For technology partners, Slice publishes a Slice
-  Public API documented on a Stoplight developer portal, exposing
-  pizzeria-oriented resources such as shops and orders over a RESTful HTTP
-  interface in two versions (v1 and v2). The platform serves pizzeria owners and
-  the partners that integrate ordering, POS, and operations into the Slice
-  network across thousands of locations.
+  Slice is an online ordering and management platform built specifically for independent local pizzerias, giving small
+  shops digital ordering, marketing, loyalty, and back-office tools that compete with large delivery marketplaces at a
+  low flat per-order fee. For technology partners, Slice publishes a Slice Public API documented on a Stoplight
+  developer portal, exposing pizzeria-oriented resources such as shops and orders over a RESTful HTTP interface in two
+  versions (v1 and v2). The platform serves pizzeria owners and the partners that integrate ordering, POS, and
+  operations into the Slice network across thousands of locations.
 type: Index
 x-type: company
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -28,13 +25,11 @@ apis:
   - aid: slice:rest-api-v1
     name: Slice Public API (v1)
     description: >-
-      Version 1 of the Slice Public API: a RESTful HTTP API documented on Slice's
-      Stoplight developer portal (project slice-public-api, spec node /API-V1.yaml).
-      It provides programmatic access to pizzeria-focused resources in the Slice
-      network — shops and orders — for technology partners integrating ordering and
-      operations with local pizzerias. Paths, methods, operation summaries, and
-      component-schema names were confirmed from Slice's live Stoplight project node
-      tree; schema property internals are auth-gated and not enumerated.
+      Version 1 of the Slice Public API: a RESTful HTTP API documented on Slice's Stoplight developer portal (project
+      slice-public-api, spec node /API-V1.yaml). It provides programmatic access to pizzeria-focused resources in the
+      Slice network — shops and orders — for technology partners integrating ordering and operations with local
+      pizzerias. Paths, methods, operation summaries, and component-schema names were confirmed from Slice's live
+      Stoplight project node tree; schema property internals are auth-gated and not enumerated.
     humanURL: https://developer.slicelife.com/
     tags:
       - Online Ordering
@@ -50,19 +45,14 @@ apis:
       - type: Authentication
         url: https://developer.slicelife.com/
         title: API Key (partner-issued)
-      - type: NaftikoCapability
-        url: capabilities/slice-public-api-v1-shops.yaml
-      - type: NaftikoCapability
-        url: capabilities/slice-public-api-v1-orders.yaml
       - type: JSONLD
         url: json-ld/slice-context.jsonld
   - aid: slice:rest-api-v2
     name: Slice Public API (v2)
     description: >-
-      Version 2 of the Slice Public API on Slice's Stoplight developer portal (spec
-      node /API-V2.yaml). It exposes the same shops and orders surface as v1 — GET
-      /shops plus create/get/update/delete on /orders — confirmed from the live
-      Stoplight project node tree.
+      Version 2 of the Slice Public API on Slice's Stoplight developer portal (spec node /API-V2.yaml). It exposes the
+      same shops and orders surface as v1 — GET /shops plus create/get/update/delete on /orders — confirmed from the
+      live Stoplight project node tree.
     humanURL: https://developer.slicelife.com/
     tags:
       - Online Ordering
@@ -78,10 +68,6 @@ apis:
       - type: Authentication
         url: https://developer.slicelife.com/
         title: API Key (partner-issued)
-      - type: NaftikoCapability
-        url: capabilities/slice-public-api-v2-shops.yaml
-      - type: NaftikoCapability
-        url: capabilities/slice-public-api-v2-orders.yaml
       - type: JSONLD
         url: json-ld/slice-context.jsonld
 common:
