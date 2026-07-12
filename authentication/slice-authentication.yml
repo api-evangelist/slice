@@ -1,0 +1,20 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/slice-public-api-v1-openapi.yml, openapi/slice-public-api-v2-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: |-
+    API key issued by Slice to approved technology partners. Request credentials
+    from api-support@slicelife.com. The exact header name is assigned with the
+    credentials; `Authorization` is used here as the documented placeholder.
+  sources:
+  - openapi/slice-public-api-v1-openapi.yml
+  - openapi/slice-public-api-v2-openapi.yml

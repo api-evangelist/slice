@@ -71,6 +71,10 @@ apis:
       - type: JSONLD
         url: json-ld/slice-context.jsonld
 common:
+  - type: DomainSecurity
+    url: security/slice-domain-security.yml
+  - type: Authentication
+    url: authentication/slice-authentication.yml
   - type: Website
     url: https://slicelife.com/
   - type: Documentation
@@ -96,6 +100,8 @@ common:
     url: vocabulary/slice-vocabulary.yml
   - type: SpectralRules
     url: rules/slice-rules.yml
+  - url: https://blog.slicelife.com/feed/
+    type: Blog
 features:
   - name: Shop Discovery
     description: Retrieve pizzerias (shops) available in the Slice network via GET /shops.
