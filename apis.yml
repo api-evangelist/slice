@@ -71,6 +71,8 @@ apis:
       - type: JSONLD
         url: json-ld/slice-context.jsonld
 common:
+  - type: AgenticAccess
+    url: agentic-access/slice-agentic-access.yml
   - type: DomainSecurity
     url: security/slice-domain-security.yml
   - type: Authentication
