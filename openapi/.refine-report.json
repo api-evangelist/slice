@@ -1,0 +1,16 @@
+{
+  "provider": "slice",
+  "sources": [
+    "slice-orders-api-openapi.yml",
+    "slice-shops-api-openapi.yml"
+  ],
+  "outputs": [
+    "slice-orders-api-openapi.yml",
+    "slice-shops-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
