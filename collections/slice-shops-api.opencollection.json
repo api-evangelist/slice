@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Slice Public Orders Shops API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shops",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Shops",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/shops"
+          },
+          "docs": "Returns shops (independent pizzerias) available in the Slice network.\nConfirmed operation from the Stoplight node `/API-V1.yaml/paths/~1shops/get`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

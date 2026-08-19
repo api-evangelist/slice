@@ -1,0 +1,209 @@
+{
+  "item": [
+    {
+      "id": "d576ffd6-d4f5-4440-862a-ff4be51bb59e",
+      "name": "Shops",
+      "description": {
+        "content": "Discover pizzerias (shops) in the Slice network.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "84b579ec-2307-4fda-b924-b3b73e467d36",
+          "name": "Get Shops",
+          "request": {
+            "name": "Get Shops",
+            "description": {
+              "content": "Returns shops (independent pizzerias) available in the Slice network.\nConfirmed operation from the Stoplight node `/API-V1.yaml/paths/~1shops/get`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shops"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11c1339d-faa0-42c6-86bf-2fedf92382e8",
+              "name": "A collection of Slice shops.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b073476-e59c-4130-8b57-482e8f73bec2",
+              "name": "Authentication failed or API key is missing/invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 8987.943165835637,\n  \"key_1\": 7225.010004005343,\n  \"key_2\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a138e4af-838b-4969-90bc-eb87dbd6be6c",
+              "name": "An error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 8987.943165835637,\n  \"key_1\": 7225.010004005343,\n  \"key_2\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f61f1a3a-c372-49df-8a72-d2e32a8c1339",
+    "name": "Slice Public Orders Shops API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Slice Public API is a RESTful HTTP API for technology partners integrating\nwith the Slice network of independent local pizzerias. It exposes pizzeria-oriented\nresources — shops and orders — so partners can discover Slice shops and create,\nretrieve, update, and cancel orders against them.\n\nThis is the **v1** surface of the Slice Public API, documented on Slice's Stoplight\ndeveloper portal at https://developer.slicelife.com (project `slice-public-api`,\nspec node `/API-V1.yaml`).\n\nThe paths, methods, operation summaries, and component-schema names in this\ndescription were reconstructed from Slice's live Stoplight project node tree, which\nis publicly enumerable. The raw OpenAPI document body and per-property schema\ndefinitions on developer.slicelife.com are gated behind workspace authentication,\nso individual schema properties are intentionally NOT enumerated here — the\n`Order` and `Error` schemas are declared as objects without invented fields. The\nserver URL is also not published publicly and is therefore omitted rather than\nfabricated; partners obtain it together with credentials from Slice.\n\nAccess requires an API key issued by Slice; partners request credentials from\napi-support@slicelife.com.\n\nContact Support:\n Name: Slice API Support\n Email: api-support@slicelife.com",
+      "type": "text/plain"
+    }
+  }
+}
