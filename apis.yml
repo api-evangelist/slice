@@ -29,6 +29,13 @@ tags:
   - Online Ordering
   - Local Commerce
   - Menus
+  - Order
+tags_raw:
+  - Restaurant
+  - Pizza
+  - Online Ordering
+  - Local Commerce
+  - Menus
   - Orders
 url: https://raw.githubusercontent.com/api-evangelist/slice/refs/heads/main/apis.yml
 created: '2026-06-02'
@@ -40,6 +47,8 @@ apis:
   description: Create, retrieve, update, and cancel orders against a Slice shop.
   humanURL: https://developer.slicelife.com/
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
