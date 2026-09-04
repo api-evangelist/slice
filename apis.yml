@@ -1,12 +1,11 @@
 aid: slice
 name: Slice
-description: >-
-  Slice is an online ordering and management platform built specifically for independent local pizzerias, giving small
-  shops digital ordering, marketing, loyalty, and back-office tools that compete with large delivery marketplaces at a
-  low flat per-order fee. For technology partners, Slice publishes a Slice Public API documented on a Stoplight
-  developer portal, exposing pizzeria-oriented resources such as shops and orders over a RESTful HTTP interface in two
-  versions (v1 and v2). The platform serves pizzeria owners and the partners that integrate ordering, POS, and
-  operations into the Slice network across thousands of locations.
+description: Slice is an online ordering and management platform built specifically for independent local pizzerias,
+  giving small shops digital ordering, marketing, loyalty, and back-office tools that compete with large delivery
+  marketplaces at a low flat per-order fee. For technology partners, Slice publishes a Slice Public API documented
+  on a Stoplight developer portal, exposing pizzeria-oriented resources such as shops and orders over a RESTful
+  HTTP interface in two versions (v1 and v2). The platform serves pizzeria owners and the partners that integrate
+  ordering, POS, and operations into the Slice network across thousands of locations.
 type: Index
 x-type: company
 deliveryModel:
@@ -23,32 +22,33 @@ deliveryModel:
   method: derived
 accessModel:
   pricing: paid
-  onboarding: self-serve
+  onboarding: unknown
   trial: false
   try_now: false
   public: false
-  label: Paid · Self-serve signup
-  confidence: high
+  label: Paid
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/slice.png
 tags:
-  - Restaurant
-  - Pizza
-  - Online Ordering
-  - Local Commerce
-  - Menus
-  - Order
+- Restaurant
+- Pizza
+- Online Ordering
+- Local Commerce
+- Menus
+- Order
 tags_raw:
-  - Restaurant
-  - Pizza
-  - Online Ordering
-  - Local Commerce
-  - Menus
-  - Orders
+- Restaurant
+- Pizza
+- Online Ordering
+- Local Commerce
+- Menus
+- Orders
 url: https://raw.githubusercontent.com/api-evangelist/slice/refs/heads/main/apis.yml
 created: '2026-06-02'
 modified: '2026-06-03'
@@ -87,67 +87,69 @@ apis:
   - type: JSONLD
     url: json-ld/slice-context.jsonld
 common:
-  - type: AgenticAccess
-    url: agentic-access/slice-agentic-access.yml
-  - type: DomainSecurity
-    url: security/slice-domain-security.yml
-  - type: Authentication
-    url: authentication/slice-authentication.yml
-  - type: Website
-    url: https://slicelife.com/
-  - type: Documentation
-    url: https://developer.slicelife.com/
-  - type: GettingStarted
-    url: https://developer.slicelife.com/docs/Getting-started.md
-  - type: Pricing
-    url: https://slice.com/pricing/
-  - type: Support
-    url: https://slicelife.com/pages/support
-  - type: Contact
-    url: mailto:api-support@slicelife.com
-    title: API Support
-  - type: GitHubOrganization
-    url: https://github.com/slicelife
-  - type: Plans
-    url: plans/slice-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/slice-rate-limits.yml
-  - type: FinOps
-    url: finops/slice-finops.yml
-  - type: Vocabulary
-    url: vocabulary/slice-vocabulary.yml
-  - type: SpectralRules
-    url: rules/slice-rules.yml
-  - url: https://blog.slicelife.com/feed/
-    type: Blog
+- type: AgenticAccess
+  url: agentic-access/slice-agentic-access.yml
+- type: DomainSecurity
+  url: security/slice-domain-security.yml
+- type: Authentication
+  url: authentication/slice-authentication.yml
+- type: Website
+  url: https://slicelife.com/
+- type: Documentation
+  url: https://developer.slicelife.com/
+- type: GettingStarted
+  url: https://developer.slicelife.com/docs/Getting-started.md
+- type: Pricing
+  url: https://slice.com/pricing/
+- type: Support
+  url: https://slicelife.com/pages/support
+- type: Contact
+  url: mailto:api-support@slicelife.com
+  title: API Support
+- type: GitHubOrganization
+  url: https://github.com/slicelife
+- type: Plans
+  url: plans/slice-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/slice-rate-limits.yml
+- type: FinOps
+  url: finops/slice-finops.yml
+- type: Vocabulary
+  url: vocabulary/slice-vocabulary.yml
+- type: SpectralRules
+  url: rules/slice-rules.yml
+- url: https://blog.slicelife.com/feed/
+  type: Blog
+- url: https://blog.slicelife.com/
+  type: Blog
 features:
-  - name: Shop Discovery
-    description: Retrieve pizzerias (shops) available in the Slice network via GET /shops.
-  - name: Order Lifecycle
-    description: Create, retrieve, update, and cancel orders against a Slice shop via the /orders resource.
-  - name: Two API Versions
-    description: Both v1 and v2 of the Slice Public API are published, sharing the same shops-and-orders surface.
-  - name: Partner API Key Authentication
-    description: Programmatic access is gated to approved technology partners via an API key issued by Slice.
-  - name: Stoplight Developer Portal
-    description: API documentation, onboarding, and reference are hosted on developer.slicelife.com (Stoplight).
+- name: Shop Discovery
+  description: Retrieve pizzerias (shops) available in the Slice network via GET /shops.
+- name: Order Lifecycle
+  description: Create, retrieve, update, and cancel orders against a Slice shop via the /orders resource.
+- name: Two API Versions
+  description: Both v1 and v2 of the Slice Public API are published, sharing the same shops-and-orders surface.
+- name: Partner API Key Authentication
+  description: Programmatic access is gated to approved technology partners via an API key issued by Slice.
+- name: Stoplight Developer Portal
+  description: API documentation, onboarding, and reference are hosted on developer.slicelife.com (Stoplight).
 useCases:
-  - name: Partner Order Integration
-    description: Technology partners place and manage orders against Slice pizzerias programmatically.
-  - name: POS and Operations Sync
-    description: Integrate point-of-sale and operations systems with the Slice network of independent pizzerias.
-  - name: Shop Catalog Sync
-    description: Pull the set of Slice shops to power partner-side discovery and routing.
+- name: Partner Order Integration
+  description: Technology partners place and manage orders against Slice pizzerias programmatically.
+- name: POS and Operations Sync
+  description: Integrate point-of-sale and operations systems with the Slice network of independent pizzerias.
+- name: Shop Catalog Sync
+  description: Pull the set of Slice shops to power partner-side discovery and routing.
 integrations:
-  - name: Point-of-Sale Systems
-    description: Connect pizzeria POS systems to the Slice ordering and operations surface.
-  - name: Ordering and Marketplace Partners
-    description: Technology partners that integrate ordering into the Slice network of local pizzerias.
+- name: Point-of-Sale Systems
+  description: Connect pizzeria POS systems to the Slice ordering and operations surface.
+- name: Ordering and Marketplace Partners
+  description: Technology partners that integrate ordering into the Slice network of local pizzerias.
 solutions:
-  - name: Independent Pizzerias
-    description: Digital ordering, marketing, loyalty, and back-office tooling at a low flat per-order fee.
-  - name: Technology Partners
-    description: Programmatic shops-and-orders access to the Slice network via the partner-issued Public API.
+- name: Independent Pizzerias
+  description: Digital ordering, marketing, loyalty, and back-office tooling at a low flat per-order fee.
+- name: Technology Partners
+  description: Programmatic shops-and-orders access to the Slice network via the partner-issued Public API.
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
