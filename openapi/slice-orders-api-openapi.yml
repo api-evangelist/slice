@@ -1,42 +1,9 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Slice Public Orders API
   description: 'The Slice Public API is a RESTful HTTP API for technology partners integrating
 
-    with the Slice network of independent local pizzerias. It exposes pizzeria-oriented
-
-    resources — shops and orders — so partners can discover Slice shops and create,
-
-    retrieve, update, and cancel orders against them.
-
-
-    This is the **v1** surface of the Slice Public API, documented on Slice''s Stoplight
-
-    developer portal at https://developer.slicelife.com (project `slice-public-api`,
-
-    spec node `/API-V1.yaml`).
-
-
-    The paths, methods, operation summaries, and component-schema names in this
-
-    description were reconstructed from Slice''s live Stoplight project node tree, which
-
-    is publicly enumerable. The raw OpenAPI document body and per-property schema
-
-    definitions on developer.slicelife.com are gated behind workspace authentication,
-
-    so individual schema properties are intentionally NOT enumerated here — the
-
-    `Order` and `Error` schemas are declared as objects without invented fields. The
-
-    server URL is also not published publicly and is therefore omitted rather than
-
-    fabricated; partners obtain it together with credentials from Slice.
-
-
-    Access requires an API key issued by Slice; partners request credentials from
-
-    api-support@slicelife.com.'
+    with the Slice network of independent local pizzerias.'
   version: v1
   contact:
     name: Slice API Support
@@ -156,27 +123,14 @@ paths:
         default:
           $ref: '#/components/responses/Error'
 components:
-  schemas:
-    Error:
-      type: object
-      title: Error
-      description: 'A Slice API error payload. Corresponds to the shared `error` model
-
-        (`/models/error.yaml`) referenced by the spec. Property internals are
-
-        auth-gated and not enumerated here to avoid fabrication.'
-      additionalProperties: true
-    Order:
-      type: object
-      title: Order
-      description: 'A Slice order. Confirmed component schema from the Stoplight node
-
-        `/API-V1.yaml/components/schemas/Order`. Individual order properties are
-
-        defined in the auth-gated source document and are deliberately not enumerated
-
-        here to avoid fabrication.'
-      additionalProperties: true
+  parameters:
+    OrderID:
+      name: orderID
+      in: path
+      required: true
+      description: The unique identifier of the order.
+      schema:
+        type: string
   responses:
     Error:
       description: An error response.
@@ -190,14 +144,27 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    OrderID:
-      name: orderID
-      in: path
-      required: true
-      description: The unique identifier of the order.
-      schema:
-        type: string
+  schemas:
+    Order:
+      type: object
+      title: Order
+      description: 'A Slice order. Confirmed component schema from the Stoplight node
+
+        `/API-V1.yaml/components/schemas/Order`. Individual order properties are
+
+        defined in the auth-gated source document and are deliberately not enumerated
+
+        here to avoid fabrication.'
+      additionalProperties: true
+    Error:
+      type: object
+      title: Error
+      description: 'A Slice API error payload. Corresponds to the shared `error` model
+
+        (`/models/error.yaml`) referenced by the spec. Property internals are
+
+        auth-gated and not enumerated here to avoid fabrication.'
+      additionalProperties: true
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
