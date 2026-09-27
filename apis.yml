@@ -55,8 +55,12 @@ apis:
   humanURL: https://developer.slicelife.com/
   tags:
   - Order
+  - Checkout
+  - Fulfillment
   tags_raw:
   - Orders
+  - Checkout
+  - Fulfillment
   properties:
   - type: OpenAPI
     url: openapi/slice-orders-api-openapi.yml
@@ -66,12 +70,15 @@ apis:
     url: https://developer.slicelife.com/
   - type: JSONLD
     url: json-ld/slice-context.jsonld
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 - aid: slice:slice-shops-api
   name: Slice Shops API
   description: Discover pizzerias (shops) in the Slice network.
   humanURL: https://developer.slicelife.com/
   tags:
   - Shops
+  - Restaurant
+  - Merchants
   properties:
   - type: OpenAPI
     url: openapi/slice-shops-api-openapi.yml
@@ -81,22 +88,11 @@ apis:
     url: https://developer.slicelife.com/
   - type: JSONLD
     url: json-ld/slice-context.jsonld
-- aid: slice:slice-shops-api
-  name: Slice Shops API (Modeled)
-  tags:
-  - Shops
-  - Restaurant
-  - Merchants
   tags_raw:
   - Shops
   - Restaurants
   - Merchants
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developer.slicelife.com/
-  properties:
-  - url: https://developer.slicelife.com/
-    type: Documentation
-  description: Logical, modeled grouping for the pizzeria (shop) records that anchor the Slice platform - profile, address, hours, service areas, and pickup/delivery availability. Reflected in the Owner's Portal shop surfaces (owners.slicelife.com/shops). No public endpoint reference is documented; access is partner-gated. Endpoints are modeled, not sourced from an OpenAPI definition.
 - aid: slice:slice-menu-api
   name: Slice Menu API (Modeled)
   tags:
@@ -113,22 +109,6 @@ apis:
   - url: https://developer.slicelife.com/
     type: Documentation
   description: Logical, modeled grouping for a shop's menu - categories, items, sizes, toppings, and pricing (the Owner's Portal exposes shop menu items at owners.slicelife.com/shops/{id}/menu/items). No public endpoint reference is documented; access is partner-gated. Endpoints are modeled, not sourced from an OpenAPI definition.
-- aid: slice:slice-orders-api
-  name: Slice Orders API (Modeled)
-  tags:
-  - Order
-  - Checkout
-  - Fulfillment
-  tags_raw:
-  - Orders
-  - Checkout
-  - Fulfillment
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developer.slicelife.com/
-  properties:
-  - url: https://developer.slicelife.com/
-    type: Documentation
-  description: Logical, modeled grouping for online orders placed for pickup or delivery - cart, checkout, order status, and fulfillment. Central to Slice's per-order commercial model (a flat per-order fee to the shop rather than a percentage). No public endpoint reference is documented; access is partner-gated. Endpoints are modeled, not sourced from an OpenAPI definition.
 - aid: slice:slice-customers-api
   name: Slice Customers API (Modeled)
   tags:

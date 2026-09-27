@@ -123,6 +123,19 @@ paths:
         default:
           $ref: '#/components/responses/Error'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication failed or API key is missing/invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Error:
+      description: An error response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     OrderID:
       name: orderID
@@ -131,20 +144,16 @@ components:
       description: The unique identifier of the order.
       schema:
         type: string
-  responses:
-    Error:
-      description: An error response.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed or API key is missing/invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      title: Error
+      description: 'A Slice API error payload. Corresponds to the shared `error` model
+
+        (`/models/error.yaml`) referenced by the spec. Property internals are
+
+        auth-gated and not enumerated here to avoid fabrication.'
+      additionalProperties: true
     Order:
       type: object
       title: Order
@@ -155,15 +164,6 @@ components:
         defined in the auth-gated source document and are deliberately not enumerated
 
         here to avoid fabrication.'
-      additionalProperties: true
-    Error:
-      type: object
-      title: Error
-      description: 'A Slice API error payload. Corresponds to the shared `error` model
-
-        (`/models/error.yaml`) referenced by the spec. Property internals are
-
-        auth-gated and not enumerated here to avoid fabrication.'
       additionalProperties: true
   securitySchemes:
     ApiKeyAuth:
