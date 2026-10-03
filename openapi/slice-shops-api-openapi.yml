@@ -41,6 +41,19 @@ paths:
         default:
           $ref: '#/components/responses/Error'
 components:
+  responses:
+    Error:
+      description: An error response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed or API key is missing/invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
@@ -51,19 +64,6 @@ components:
 
         auth-gated and not enumerated here to avoid fabrication.'
       additionalProperties: true
-  responses:
-    Unauthorized:
-      description: Authentication failed or API key is missing/invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Error:
-      description: An error response.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
