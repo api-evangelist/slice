@@ -42,14 +42,14 @@ paths:
           $ref: '#/components/responses/Error'
 components:
   responses:
-    Error:
-      description: An error response.
+    Unauthorized:
+      description: Authentication failed or API key is missing/invalid.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed or API key is missing/invalid.
+    Error:
+      description: An error response.
       content:
         application/json:
           schema:

@@ -136,14 +136,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    OrderID:
-      name: orderID
-      in: path
-      required: true
-      description: The unique identifier of the order.
-      schema:
-        type: string
   schemas:
     Order:
       type: object
@@ -165,6 +157,14 @@ components:
 
         auth-gated and not enumerated here to avoid fabrication.'
       additionalProperties: true
+  parameters:
+    OrderID:
+      name: orderID
+      in: path
+      required: true
+      description: The unique identifier of the order.
+      schema:
+        type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
